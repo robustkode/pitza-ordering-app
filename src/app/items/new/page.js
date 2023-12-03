@@ -4,7 +4,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import EditableImage from "@/components/layout/EditableImage";
 import MenuItemForm from "@/components/layout/MenuItemForm";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 
 export default function NewMenuItemPage() {
   const [redirectToItems, setRedirectToItems] = useState(false);
-  const { loading, data } = fetchProfile();
+  const { loading, data } = useProfile();
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
@@ -37,10 +37,6 @@ export default function NewMenuItemPage() {
 
   if (redirectToItems) {
     return redirect("/items");
-  }
-
-  if (loading) {
-    return "Loading use info...";
   }
 
   if (!data.admin) {

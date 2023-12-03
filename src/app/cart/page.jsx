@@ -3,14 +3,14 @@ import { CartContext, cartProductPrice } from "@/AppContext";
 import AddressInputs from "@/components/layout/AddressInputs";
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import CartProduct from "@/components/layout/menu/CartProduct";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function CartPage() {
   const { cartProducts, removeCartProduct } = useContext(CartContext);
   const [address, setAddress] = useState({});
-  const { data: profileData } = fetchProfile();
+  const { data: profileData } = useProfile();
 
   useEffect(() => {
     if (typeof window !== "undefined") {

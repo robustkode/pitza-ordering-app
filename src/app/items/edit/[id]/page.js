@@ -1,22 +1,22 @@
 "use client";
 import DeleteButton from "@/components/layout/DeleteButton";
 
-import EditableImage from "@/components/layout/EditableImage";
 import MenuItemForm from "@/components/layout/MenuItemForm";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import Link from "next/link";
 import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 export default function EditMenuItemPage() {
   const { id } = useParams();
 
   const [menuItem, setMenuItem] = useState(null);
   const [redirectToItems, setRedirectToItems] = useState(false);
-  const { loading, data } = fetchProfile();
+  const { loading, data } = useProfile();
   const [menuItemLoading, setMenuItemLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function EditMenuItemPage() {
         setMenuItemLoading(false);
       });
     });
-  }, []);
+  }, [id]);
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
@@ -86,13 +86,13 @@ export default function EditMenuItemPage() {
         />
       ) : !data.admin ? (
         <h1 className=" text-center my-32 text-red text-2xl">
-          You're not an admin!
+          You&apos;re not an admin!
         </h1>
       ) : (
         <>
           <div className="max-w-2xl mx-auto mt-8">
             <Link href={"/items"} className="button">
-              <IoIosArrowRoundBack />
+              <IoIosArrowRoundBack size={20} />
               <span>Show all items</span>
             </Link>
           </div>

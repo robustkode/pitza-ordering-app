@@ -1,6 +1,6 @@
 "use client";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const [usersLoading, SetusersLoading] = useState(false);
-  const { loading, data } = fetchProfile();
+  const { loading, data } = useProfile();
 
   useEffect(() => {
     fetch("/api/users").then((response) => {
@@ -31,7 +31,7 @@ export default function UsersPage() {
         />
       ) : !data.admin ? (
         <h1 className=" mx-auto my-32 text-red text-2xl">
-          You're not an admin!
+          You&apos;re not an admin!
         </h1>
       ) : (
         <div className="mt-8">

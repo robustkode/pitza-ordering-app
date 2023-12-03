@@ -1,14 +1,14 @@
 "use client";
 import UserForm from "@/components/layout/UserForm";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Image from "next/image";
 
 export default function EditUserPage() {
-  const { loading, data } = fetchProfile();
+  const { loading, data } = useProfile();
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function EditUserPage() {
         setUserLoading(false);
       });
     });
-  }, []);
+  }, [id]);
 
   async function handleSaveButtonClick(ev, data) {
     ev.preventDefault();
@@ -55,7 +55,7 @@ export default function EditUserPage() {
           />
         ) : !data.admin ? (
           <h1 className=" mx-auto my-32 text-red text-2xl">
-            You're not an admin!
+            You&apos;re not an admin!
           </h1>
         ) : (
           <UserForm user={user} onSave={handleSaveButtonClick} />

@@ -1,7 +1,7 @@
 "use client";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function MenuItemsPage() {
   const [menuItems, setMenuItems] = useState([]);
   const [menuItemsLoading, setMenuItemsLoading] = useState(true);
-  const { loading, data } = fetchProfile();
+  const { loading, data } = useProfile();
 
   useEffect(() => {
     fetch("/api/items").then((res) => {
@@ -33,7 +33,7 @@ export default function MenuItemsPage() {
         />
       ) : !data.admin ? (
         <h1 className=" mx-auto my-32 text-center text-red text-2xl">
-          You're not an admin!
+          You&apos;re not an admin!
         </h1>
       ) : (
         <>

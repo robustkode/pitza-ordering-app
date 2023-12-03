@@ -1,7 +1,7 @@
 "use client";
 import SectionHeaders from "@/components/layout/SectionHeaders";
 import UserTabs from "@/components/layout/UserTabs";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import moment from "moment";
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
-  const { loading, data: profile } = fetchProfile();
+  const { loading, data: profile } = useProfile();
 
   useEffect(() => {
     fetchOrders();
@@ -36,6 +36,7 @@ export default function OrdersPage() {
             src={"/loading.gif"}
             width={100}
             height={100}
+            alt="loading"
           />
         ) : (
           orders?.length > 0 &&

@@ -2,7 +2,7 @@
 import DeleteButton from "@/components/layout/DeleteButton";
 import UserTabs from "@/components/layout/UserTabs";
 import { useEffect, useState } from "react";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import toast from "react-hot-toast";
 import { SlPencil } from "react-icons/sl";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function CategoriesPage() {
   const [categoryName, setCategoryName] = useState("");
   const [categories, setCategories] = useState([]);
-  const { loading: profileLoading, data: profileData } = fetchProfile();
+  const { loading: profileLoading, data: profileData } = useProfile();
   const [editedCategory, setEditedCategory] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
 
@@ -89,7 +89,7 @@ export default function CategoriesPage() {
         />
       ) : !profileData.admin ? (
         <h1 className=" mx-auto my-32 text-red text-2xl">
-          You're not an admin!
+          You&apos;re not an admin!
         </h1>
       ) : (
         <>

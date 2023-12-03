@@ -1,7 +1,7 @@
 "use client";
 import AddressInputs from "@/components/layout/AddressInputs";
 import EditableImage from "@/components/layout/EditableImage";
-import { fetchProfile } from "@/fetchProfile";
+import { useProfile } from "@/useProfile";
 import { useState } from "react";
 
 export default function UserForm({ user, onSave }) {
@@ -13,7 +13,7 @@ export default function UserForm({ user, onSave }) {
   const [city, setCity] = useState(user?.city || "");
 
   const [admin, setAdmin] = useState(user?.admin || false);
-  const { data: loggedInUserData } = fetchProfile();
+  const { data: loggedInUserData } = useProfile();
 
   function handleAddressChange(propName, value) {
     if (propName === "phone") setPhone(value);
