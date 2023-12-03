@@ -38,8 +38,7 @@ export default function OrdersPage() {
             height={100}
             alt="loading"
           />
-        ) : (
-          orders?.length > 0 &&
+        ) : orders?.length > 0 ? (
           orders.map((order) => (
             <div
               key={order._id}
@@ -59,6 +58,10 @@ export default function OrdersPage() {
               </div>
             </div>
           ))
+        ) : (
+          <p className="text-center text-2xl font-semiBold">
+            You haven&apos;t ordered yet!
+          </p>
         )}
       </div>
     </section>
