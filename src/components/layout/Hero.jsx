@@ -12,7 +12,7 @@ export default function Hero() {
         <p className="my-6 text-gray-700 text-sm text-justify">
           From Classic to Specialty to Deep Dish and Thin Crust Flatbreads, we
           create pizzas so fantastic you will have to try them all! Enjoy
-          endless slices of your favorites at Cicis Pizza or take your pie to-go
+          endless slices of your favorites at Pitza Hub or take your pie to-go
           for pickup or delivery.
         </p>
       </div>

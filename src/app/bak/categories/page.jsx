@@ -78,7 +78,6 @@ export default function CategoriesPage() {
 
   return (
     <section className="mt-8 max-w-3xl mx-auto">
-      <UserTabs isAdmin={true} />
       {profileLoading || categoriesLoading ? (
         <Image
           className="mx-auto my-32"
@@ -93,9 +92,9 @@ export default function CategoriesPage() {
         </h1>
       ) : (
         <>
-          <form className="mt-8  max-w-3xl" onSubmit={handleCategorySubmit}>
-            <div className="flex gap-2 items-end">
-              <div className="grow">
+          <form className="mt-8" onSubmit={handleCategorySubmit}>
+            <div className="flex gap-2 justify-between">
+              <div className="w-full">
                 <label>
                   {editedCategory ? "Update" : "Create new"}
                   {editedCategory && (
@@ -108,6 +107,7 @@ export default function CategoriesPage() {
                   type="text"
                   value={categoryName}
                   onChange={(ev) => setCategoryName(ev.target.value)}
+                  className="grow"
                 />
               </div>
               <div className="pb-2 flex gap-2">

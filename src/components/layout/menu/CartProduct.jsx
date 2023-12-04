@@ -9,9 +9,9 @@ export default function CartProduct({ product, onRemove, index }) {
         <Image width={240} height={240} src={product.image} alt={"item"} />
       </div>
       <div className="grow">
-        <h3 className="font-semibold">{product.name}</h3>
+        <h3 className="font-semibold text-gray-800">{product.name}</h3>
         {product.size && (
-          <div className="text-sm">
+          <div className="text-sm text-gray-800">
             Size: <span>{product.size.name}</span>
           </div>
         )}

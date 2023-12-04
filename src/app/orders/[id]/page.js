@@ -6,20 +6,32 @@ import CartProduct from "@/components/layout/menu/CartProduct";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import { OrdersContext } from "../../../OrdersContext";
+import { useProfile } from "../../../useProfile";
+import { useSession } from "next-auth/react";
 
 export default function OrderPage() {
   const { clearCart } = useContext(CartContext);
+  const { addToOrders } = useContext(OrdersContext);
   const [order, setOrder] = useState();
   const [loadingOrder, setLoadingOrder] = useState(true);
   const { id } = useParams();
+  const session = useSession();
+
   useEffect(() => {
     if (typeof window.console !== "undefined") {
       if (window.location.href.includes("clear-cart=1")) {
+        if (session.status !== "authenticated") {
+          console.log(id, "orderId");
+          addToOrders({ _id: `ObjectId${id}` });
+        }
+        console.log("cleaning cart");
         clearCart();
       }
     }
     if (id) {
       setLoadingOrder(true);
+
       fetch("/api/orders?_id=" + id).then((res) => {
         res.json().then((orderData) => {
           setOrder(orderData);

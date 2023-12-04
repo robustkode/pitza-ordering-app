@@ -13,6 +13,7 @@ export default function ProfilePage() {
   const session = useSession();
 
   const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [profileFetched, setProfileFetched] = useState(false);
   const { status } = session;
 
@@ -21,6 +22,7 @@ export default function ProfilePage() {
       fetch("/api/profile").then((response) => {
         response.json().then((data) => {
           setUser(data);
+          setIsAdmin(data.admin);
           setProfileFetched(true);
         });
       });
@@ -52,7 +54,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <section className="mt-8 ">
+    <section className="mt-8 max-w-3xl mx-auto">
+      <UserTabs isAdmin={isAdmin} />
       <div className="">
         {status === "loading" || !profileFetched ? (
           <Image

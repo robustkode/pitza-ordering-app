@@ -4,6 +4,8 @@ import Footer from "@/components/layout/Footer";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "@/components/layout/ScrollTop";
+import { OrdersProvider } from "@/OrdersContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,14 +22,19 @@ export default function RootLayout({ children }) {
       <body className={montserrat.className}>
         <main>
           <AppProvider>
-            <Toaster />
-            <div className="main-container grid-Container">
-              <Header />
-              <div className=" mx-auto p-4 max-w-4xl md:px-0">{children}</div>
-              <div className="">
+            <OrdersProvider>
+              <Toaster />
+              <div className="main-container">
+                <Header />
+                <div className=" body-container mx-auto p-4 max-w-4xl md:px-2">
+                  {children}
+                </div>
+
                 <Footer />
+
+                <ScrollToTop />
               </div>
-            </div>
+            </OrdersProvider>
           </AppProvider>
         </main>
       </body>

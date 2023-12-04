@@ -7,18 +7,17 @@ import Link from "next/link";
 import { Rob } from "next/font/google";
 import ItemSkeleton from "../components/layout/ItemSkeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ScrollTop from "@/components/layout/ScrollTop";
 
 export default function Home() {
   return (
-    <>
+    <div className="">
       <Hero />
-      <Link href="/menu" className="grid grid-cols-3 my-4">
-        <div></div>
-        <div className="justify-center bg-primary text-black uppercase flex items-center gap-2 text-white px-4 py-2 rounded-full mb-4">
-          Explore FULL MENU
+      <Link href="/menu" className="flex justify-center">
+        <div className="bg-primary flex items-center text-white px-4 py-2 rounded-full mb-4">
+          Explore Full Menu
           <IoIosArrowRoundForward />
         </div>
-        <div></div>
       </Link>
       <HomeMenu />
 
@@ -62,6 +61,6 @@ export default function Home() {
           Pitza Hub. We hope to serve you soon.
         </p>
       </section>
-    </>
+    </div>
   );
 }

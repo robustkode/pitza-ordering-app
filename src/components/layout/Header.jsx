@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useContext, useEffect, useState } from "react";
 import { GrCart } from "react-icons/gr";
+import { useProfile } from "@/useProfile";
 
 function AuthLinks({ status, userName }) {
   const { cartProducts, clearCart } = useContext(CartContext);
@@ -31,9 +32,9 @@ function AuthLinks({ status, userName }) {
     return (
       <Link
         href={"/register"}
-        className="bg-primary rounded-full text-white px-8 py-2"
+        className="bg-primary ml-2 rounded-full text-white px-8 py-2"
       >
-        Sign Up
+        Sign&nbsp;Up
       </Link>
     );
   }
@@ -47,6 +48,7 @@ export default function Header() {
   const { cartProducts } = useContext(CartContext);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [pathname, setPathname] = useState("");
+  const { data } = useProfile();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -100,7 +102,7 @@ export default function Header() {
         {mobileNavOpen && (
           <div
             onClick={() => setMobileNavOpen(false)}
-            className="md:hidden p-4 bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center"
+            className="md:hidden p-4 bg-gray-200 rounded-lg mt-2 flex flex-col gap-2 text-center text-gray-900"
           >
             <Link href={"/"}>Home</Link>
             <Link
@@ -109,13 +111,20 @@ export default function Header() {
             >
               Menu
             </Link>
-            <Link href={"/#about"}>About</Link>
-            <Link href={"/#contact"}>Contact</Link>
+            {!data.admin ? (
+              <>
+                <Link href={"/orders"}>Orders</Link>
+                <Link href={"/#about"}>About</Link>
+              </>
+            ) : (
+              <Link href={"/admin/categories"}>Dashboard</Link>
+            )}
+
             <AuthLinks status={status} userName={userName} />
           </div>
         )}
         <div className="hidden md:flex items-center justify-between">
-          <nav className="flex items-center gap-8 text-gray-800 font-semibold">
+          <nav className="flex items-center gap-12 text-gray-900 font-bold text-xl">
             <Link
               className="text-primary uppercase font-semibold text-2xl"
               href={"/"}
@@ -129,18 +138,14 @@ export default function Header() {
             >
               Menu
             </Link>
-            <Link
-              className={path === "/cart" ? "active-primary" : ""}
-              href={"/cart"}
-            >
-              Cart
-            </Link>
-            <Link
-              className={checkPathname("about") ? "active-primary" : ""}
-              href={"/#about"}
-            >
-              About
-            </Link>
+            {!data.admin ? (
+              <>
+                <Link href={"/orders"}>Orders</Link>
+                <Link href={"/#about"}>About</Link>
+              </>
+            ) : (
+              <Link href={"/admin/categories"}>Dashboard</Link>
+            )}
           </nav>
           <nav className="flex items-center gap-4 text-gray-800 font-semibold">
             <AuthLinks status={status} userName={userName} />

@@ -71,7 +71,6 @@ export default function CartPage() {
   return (
     <section className="mt-8">
       <div className="text-center">
-        <SectionHeaders mainHeader="Cart" />
         {cartProducts?.length === 0 && (
           <>
             <p className="mt-4 text-center text-2xl font-semiBold">
@@ -83,7 +82,7 @@ export default function CartPage() {
 
       {cartProducts?.length > 0 && (
         <>
-          <div className="mt-8 grid gap-8 grid-cols-2">
+          <div className="mt-8 grid gap-8 sm:grid-cols-2">
             <div>
               {cartProducts.map((product, index) => (
                 <CartProduct
@@ -101,7 +100,7 @@ export default function CartPage() {
                   <br />
                   Total:
                 </div>
-                <div className="font-semibold pl-2 text-right">
+                <div className="font-semiboldtext-gray-700 pl-2 text-right">
                   ${subtotal}
                   <br />
                   $5
@@ -109,7 +108,7 @@ export default function CartPage() {
                 </div>
               </div>
             </div>
-            <div className="text-center">
+            <div className="">
               <div className="bg-gray-100 p-4 rounded-lg ">
                 <h2>Checkout</h2>
                 <form onSubmit={handleCheckout}>

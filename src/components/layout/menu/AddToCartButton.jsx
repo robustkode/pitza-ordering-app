@@ -1,18 +1,14 @@
-export default function AddToCartButton({
-  hasSizesOrExtras,
-  onClick,
-  price,
-  image,
-}) {
+export default function AddToCartButton({ hasSizesOrExtras, onClick, price }) {
   const refinedPrice = price ? price : 0;
   if (!hasSizesOrExtras) {
     return (
-      <div
-        className="mt-4 bg-primary cursor-pointer   text-white rounded-full px-8 py-2 text-center"
+      <button
+        type="button"
         onClick={onClick}
+        className="mt-4 bg-primary text-white rounded-full px-8 py-2 text-center"
       >
-        Add to cart ${refinedPrice}
-      </div>
+        <span>Add to cart ${refinedPrice}</span>
+      </button>
     );
   }
   return (

@@ -18,6 +18,12 @@ module.exports = {
         ordersList: "0.3fr 0.2fr 0.2fr 0.3fr",
         mainContainer: "auto 1fr auto",
       },
+      gridTemplateRows: {
+        bodyContainer: "auto 1fr auto",
+      },
+      minHeight: {
+        body: "70%",
+      },
     },
   },
   plugins: [],
