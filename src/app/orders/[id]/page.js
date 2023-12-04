@@ -22,10 +22,9 @@ export default function OrderPage() {
     if (typeof window.console !== "undefined") {
       if (window.location.href.includes("clear-cart=1")) {
         if (session.status !== "authenticated") {
-          console.log(id, "orderId");
-          addToOrders({ _id: `ObjectId${id}` });
+          addToOrders({ _id: id });
         }
-        console.log("cleaning cart");
+
         clearCart();
       }
     }

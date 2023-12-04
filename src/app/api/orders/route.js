@@ -37,7 +37,6 @@ export async function GET(req) {
     const data = JSON.parse(list);
 
     const query = createOrQuery(data);
-    console.log(query, "query");
 
     const res = await Order.find(query);
 

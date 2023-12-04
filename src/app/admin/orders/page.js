@@ -44,7 +44,7 @@ export default function OrdersPage() {
               className=" w-full orders-list grid md:grid-cols-ordersList md:justify-between bg-gray-100 rounded-lg items-center text-center justify-center p-4 mb-2"
             >
               <div className="text-gray-700">
-                {order.userEmail ? order.userEmail : unknown}
+                {order.userEmail ? order.userEmail : "un-registered"}
               </div>
               <div className="text-gray-700 text-sm">
                 {order.cartProducts.map((p) => p.name).join(", ")}

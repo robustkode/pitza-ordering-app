@@ -21,7 +21,6 @@ export function OrdersProvider({ children }) {
   }
 
   function addToOrders(order) {
-    console.log(order, "order in context");
     setOrders((pr) => {
       const newOrders = [...pr, order];
       saveOrdersToLocalStorage(newOrders);
