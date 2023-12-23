@@ -14,17 +14,17 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
     sizes?.length > 0 || extraIngredientPrices?.length > 0;
   return (
     <div className="bg-itemBackground  p-4 rounded-lg flex flex-col text-center group hover:bg-itemBackgroundHover hover:shadow-md hover:shadow-black/25 transition-all">
-      <div className="grow">
+      <div className="grow flex flex-col justify-center">
         <Image
           src={image}
           alt={name}
           height={300}
           width={300}
-          className="mx-auto"
+          className="mx-auto mt-auto"
         />
 
         <h4
-          className={oswald.className + "font-semibold uppercase text-3xl my-3"}
+          className={oswald.className + "font-semibold uppercase text-3xl mb-3 mt-auto"}
         >
           {name}
         </h4>
