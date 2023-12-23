@@ -100,7 +100,7 @@ export default function OrdersPage() {
           </div>
         ))
       ) : (
-        <></>
+        <p className="text-center mt-16">You haven't ordered yet!</p>
       )}
     </section>
   );
