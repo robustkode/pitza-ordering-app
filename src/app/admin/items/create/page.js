@@ -51,7 +51,7 @@ export default function NewMenuItemPage() {
       <MenuItemForm
         menuItem={null}
         onSubmit={handleFormSubmit}
-        placeHolder="/placeholder.png"
+        placeHolder="/pizza-placeholder.png"
       />
     </section>
   );
