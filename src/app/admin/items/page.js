@@ -47,7 +47,7 @@ export default function MenuItemsPage() {
                 menuItems.map((item) => (
                   <Link
                     key={item._id}
-                    href={"/items/edit/" + item._id}
+                    href={"/admin/items/edit/" + item._id}
                     className="bg-gray-200 rounded-lg p-4"
                   >
                     <div className="relative">
